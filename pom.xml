@@ -19,6 +19,21 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
+	<!-- <build> -->
+	<!-- <pluginManagement> -->
+	<!-- <plugins> -->
+	<!-- <plugin> -->
+	<!-- <groupId>org.apache.maven.plugins</groupId> -->
+	<!-- <artifactId>maven-compiler-plugin</artifactId> -->
+	<!-- <version>3.8.1</version> -->
+	<!-- <configuration> -->
+	<!-- <source>14</source> -->
+	<!-- <target>14</target> -->
+	<!-- </configuration> -->
+	<!-- </plugin> -->
+	<!-- </plugins> -->
+	<!-- </pluginManagement> -->
+	<!-- </build> -->
 	<dependencies>
 
 		<dependency>
@@ -60,6 +75,22 @@
 
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>regression</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>regression</value>
+				</property>
+			</activation>
+			<properties>
+				<testNGSuites>testng.xml</testNGSuites>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
@@ -77,10 +108,19 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
+					<configuration>
+						<source>14</source>
+						<target>14</target>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
+					<configuration>
+						<suiteXmlFiles>
+							<suiteXmlFile>${testNGSuites}</suiteXmlFile>
+						</suiteXmlFiles>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
