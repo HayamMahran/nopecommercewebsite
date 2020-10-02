@@ -1,11 +1,15 @@
 package Tests;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -18,6 +22,27 @@ import utilities.Helper;
 public class TestBase {
 
 	public static WebDriver driver;
+	public static String downloadpath = System.getProperty("user.dir")+"\\Downloads";
+	
+	public static FirefoxOptions firefoxOption() {
+		FirefoxOptions option = new FirefoxOptions();
+		option.addPreference("browser.download.folderList", 2);
+		option.addPreference("browser.download.dir", downloadpath);
+		option.addPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf");
+		option.addPreference("browser.download.manager.showWhenStarting", false);
+		option.addPreference("pdfjs.disabled", true);
+		return option;
+	}
+
+	public static ChromeOptions chromeOption() {
+		ChromeOptions options = new ChromeOptions();
+		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		chromePrefs.put("profile.default.content_settings.popups", 0);
+		chromePrefs.put("download.default_directory", downloadpath);
+		options.setExperimentalOption("prefs", chromePrefs);
+		options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		return options;
+	}
 
 	@BeforeSuite
 	@Parameters({"browser"})
@@ -26,13 +51,13 @@ public class TestBase {
 		if (browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					System.getProperty("user.dir")+"./Drivers/chromedriver.exe");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(chromeOption());
 		}
 		
 		else if (browserName.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
 					System.getProperty("user.dir")+"./Drivers/geckodriver.exe");
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(firefoxOption());
 		}
 		else if (browserName.equalsIgnoreCase("edge")) {
 			System.setProperty("webdriver.edge.driver",

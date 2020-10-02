@@ -3,12 +3,14 @@ package Tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import Pages.HomePage;
 import Pages.ProductDetailsPage;
 import Pages.SearchProductPage;
 
 public class AddProductToWishlistTest extends TestBase{
 
 	String PartialProductName = "MacB";
+	HomePage homepageobject;
 	SearchProductPage searchobject;
 	ProductDetailsPage productdetailsobject;
 
@@ -29,5 +31,11 @@ public class AddProductToWishlistTest extends TestBase{
 	public void UserCanAddProductToWishlist() {
 		productdetailsobject = new ProductDetailsPage(driver);
 		productdetailsobject.AddToWishlist();
+	}
+	
+	@Test (priority = 3)
+	public void UserCanLogOut() {
+		homepageobject = new HomePage(driver);
+		homepageobject.UserLogOut();
 	}
 }

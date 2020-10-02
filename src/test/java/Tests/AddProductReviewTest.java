@@ -57,7 +57,13 @@ public class AddProductReviewTest extends TestBase{
 
 		} catch (Exception e) {
 			System.out.println("Erro occurred"+ e.getMessage());
-		}	
+		}
+	}
+		
+		@Test (priority = 4)
+		public void UserCanLogOut() {
+			homepageobject = new HomePage(driver);
+			homepageobject.UserLogOut();
+		}
 
 	}
-}

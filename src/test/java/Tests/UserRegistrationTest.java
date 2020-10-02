@@ -41,4 +41,10 @@ public class UserRegistrationTest extends TestBase{
 		loginobject.UserLogin("testtest3@test.com", "a123456783");
 		//Assert.assertTrue(registerobject.logoutlink.isDisplayed());
 	}
+	
+	@Test (priority = 4)
+	public void UserCanLogOut() {
+		homeobject = new HomePage(driver);
+		homeobject.UserLogOut();
+	}
 }

@@ -2,6 +2,7 @@ package Tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import Pages.ProductDetailsPage;
 import Pages.SearchProductPage;
 import Pages.WishlistPage;

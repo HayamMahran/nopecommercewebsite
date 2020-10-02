@@ -32,5 +32,7 @@ public class PageBase {
 		
 	}
 	
-	
+	public void ClearText(WebElement element) {
+		element.clear();
+	}
 }

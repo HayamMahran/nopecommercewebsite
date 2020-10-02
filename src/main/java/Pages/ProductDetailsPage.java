@@ -28,6 +28,18 @@ public class ProductDetailsPage extends PageBase{
 	@FindBy(linkText = "wishlist")
 	WebElement wishlistbutn;
 	
+	@FindBy(css = "input.button-2.add-to-compare-list-button")
+	WebElement addtocomparebtn;
+	
+	@FindBy(linkText = "product comparison")
+	WebElement comparisonbtn;
+	
+	@FindBy(id = "add-to-cart-button-4")
+	WebElement addtocartbtn;
+	
+	@FindBy(css = "a.ico-cart")
+	WebElement cartbtn;
+	
 	public void OpenEmailFriendPage() {
 		Clickbutton(emailfriendbtn);
 	}
@@ -43,5 +55,20 @@ public class ProductDetailsPage extends PageBase{
 	public void OpenWishListPage() {
 		Clickbutton(wishlistbutn);
 	}
+	
+	public void AddProductToCompare() {
+		Clickbutton(addtocomparebtn);
+	}
 
+	public void OpenProductComparisonPage() {
+		Clickbutton(comparisonbtn);
+	}
+	
+	public void AddProductToCart() {
+		Clickbutton(addtocartbtn);
+	}
+	
+	public void OpenShoppingCartPage() {
+		Clickbutton(cartbtn);
+	}
 }

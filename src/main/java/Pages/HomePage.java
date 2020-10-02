@@ -21,6 +21,9 @@ public class HomePage extends PageBase{
 	@FindBy(css = "a.ico-login")
 	WebElement Loginlink;
 	
+	@FindBy(css = "a.ico-logout")
+	WebElement Logoutlink;
+	
 	@FindBy(linkText = "Contact us")
 	WebElement ContactUsLink;
 	
@@ -57,5 +60,9 @@ public class HomePage extends PageBase{
 	public void SelectNotebooksMenu() {
 		action.moveToElement(computersmenu).
 		moveToElement(notebooksmenu).click().build().perform();
+	}
+	
+	public void UserLogOut() {
+		Clickbutton(Logoutlink);
 	}
 }
