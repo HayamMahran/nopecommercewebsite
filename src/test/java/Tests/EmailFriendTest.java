@@ -54,5 +54,11 @@ public class EmailFriendTest extends TestBase{
 		emailfriendobject.EmailAfriend(FriendEmail, MessageToFriend);
 		Assert.assertTrue(emailfriendobject.successmessagetxt.getText().contains("has been sent"));
 	}
+	
+	@Test (priority = 4)
+	public void UserCanLogOut() {
+		homeobject = new HomePage(driver);
+		homeobject.UserLogOut();
+	}
 
 }

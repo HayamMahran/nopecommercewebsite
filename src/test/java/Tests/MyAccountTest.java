@@ -2,6 +2,7 @@ package Tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.MyAccountPage;
@@ -50,4 +51,9 @@ public class MyAccountTest extends TestBase {
 		//Assert.assertTrue(registerobject.logoutlink.isDisplayed());
 	}
 
+	@Test (priority = 5)
+	public void UserCanLogOut() {
+		homeobject = new HomePage(driver);
+		homeobject.UserLogOut();
+	}
 }
