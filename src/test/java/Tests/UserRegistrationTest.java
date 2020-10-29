@@ -1,9 +1,7 @@
 package Tests;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.UserRegistrationPage;
@@ -12,18 +10,18 @@ public class UserRegistrationTest extends TestBase{
 	HomePage homeobject;
 	UserRegistrationPage registerobject;
 	LoginPage loginobject;
-	String FirstName = "Hayam";
-	String LastName = "Mahran";
-	String Email = "test@test.com";
-	String Password = "12345678";
+	String FirstName;
+	String LastName ;
+	String Email ;
+	String Password ;
 	
 	
 	@DataProvider(name = "testData")
 	public static Object[][] UserData(){
 		
 		return new Object[][]{
-				{"Hayam","Mahran","testn@gmail.com","12345678"},
-				{"Ahmed","Ali","testtest@test.com","09876543"}
+				{"Hayam","Mahran","testn1@gmail.com","12345678"},
+				{"Ahmed","Ali","testtes1t@test.com","09876543"}
 				};
 	}
 
@@ -39,14 +37,11 @@ public class UserRegistrationTest extends TestBase{
 		loginobject = new LoginPage(driver);
 		loginobject.UserLogin(Email, Password);
 		Assert.assertTrue(registerobject.logoutlink.isDisplayed());
-	}
-	
-	
-	@Test(priority =2)
-	public void UserCanLogOutSuccessfully() {
 		registerobject = new UserRegistrationPage(driver);
 		registerobject.userLogout();
 	}
 	
+	
+
 
 }
