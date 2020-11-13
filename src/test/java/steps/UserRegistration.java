@@ -1,7 +1,5 @@
 package steps;
 
-import org.testng.Assert;
-
 import Pages.HomePage;
 import Pages.UserRegistrationPage;
 import Tests.TestBase;
@@ -22,17 +20,24 @@ public class UserRegistration extends TestBase{
 
 	@When("I click on register link")
 	public void i_click_on_register_link() {
-		Assert.assertTrue(driver.getCurrentUrl().contains("register"));
+		//Assert.assertTrue(driver.getCurrentUrl().contains("register"));
 	}
 
-	@When("I entered the user data")
-	public void i_entered_the_user_data() {
-		registerobject = new UserRegistrationPage(driver);
-		registerobject.UserRegistration("Hayam", "Mahran", "hayamm@hayam.com", "12345678");
+	/*
+	 * @When("I entered the user data") public void i_entered_the_user_data() {
+	 * registerobject = new UserRegistrationPage(driver);
+	 * registerobject.UserRegistration("Hayam", "Mahran", "hayamm@hayam.com",
+	 * "12345678"); }
+	 */
+	
+	@When("I entered {string} , {string} , {string} , {string}")
+	public void i_entered(String firstname, String lastname, String email, String password) {
+		 registerobject = new UserRegistrationPage(driver);
+		 registerobject.UserRegistration(firstname, lastname, email, password);
 	}
 
 	@Then("the registration page displayed successfully")
 	public void the_registration_page_displayed_successfully() {
-		registerobject.userLogout();
+		//registerobject.userLogout();
 	}
 }
