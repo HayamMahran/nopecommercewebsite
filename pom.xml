@@ -106,6 +106,33 @@
 			<version>1.0.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>6.8.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>6.8.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>6.8.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-gherkin</artifactId>
+			<version>6.8.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<profiles>

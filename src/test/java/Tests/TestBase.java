@@ -17,9 +17,10 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import utilities.Helper;
 
-public class TestBase {
+public class TestBase extends AbstractTestNGCucumberTests{
 
 	public static WebDriver driver;
 	public static String downloadpath = System.getProperty("user.dir")+"\\Downloads";
